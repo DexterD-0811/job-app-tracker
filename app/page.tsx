@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
                             Capture, organize, and manage your job search in one place.
                         </p>
                         <div className="flex flex-col items-center gap-4">
-                            <button>Start for free</button>
+                            <Button>Start for free</Button>
                             <p>Free forever. No credit card required.</p>
                         </div>
                     </div>
