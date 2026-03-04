@@ -9,7 +9,7 @@ export default function Home() {
                         <h1 className="text-black">
                             A better way to track your job application.
                         </h1>
-                        <p className="text-gray-700">
+                        <p className="text-muted-foreground">
                             Capture, organize, and manage your job search in one place.
                         </p>
                     </div>
