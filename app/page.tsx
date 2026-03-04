@@ -14,8 +14,8 @@ export default function Home() {
                             Capture, organize, and manage your job search in one place.
                         </p>
                         <div className="flex flex-col items-center gap-4">
-                            <Button>Start for free</Button>
-                            <p>Free forever. No credit card required.</p>
+                            <Button size="lg"  className="h-12 px-8 text-lg font-medium">Start for free</Button>
+                            <p className="text-sm text-muted-foreground">Free forever. No credit card required.</p>
                         </div>
                     </div>
                 </section>
