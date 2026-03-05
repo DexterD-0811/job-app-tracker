@@ -1,15 +1,9 @@
-"use client"
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import HeroTabs from "@/components/ui/hero-tabs";
 
 export default function Home() {
-
-    const [activeTab, setActiveTab] = useState("organize");
-
     return (
         <div className="flex min-h-screen flex-col bg-white">
             <main className="flex-1">{/* Hero Section */}
@@ -31,44 +25,7 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
-
-                <section className="border-t bg-white py-16">
-                    <div className="container mx-auto px-4">
-                        {/* Tabs */}
-                        <div className="mx-auto mx-w-6xl">
-                            <div className="flex gap-2 justify-center mb-8">
-                                <Button onClick={() => setActiveTab("organize")}>Organize Applications</Button>
-                                <Button onClick={() => setActiveTab("hired")}>Get Hired</Button>
-                                <Button onClick={() => setActiveTab("boards")}>Manage Boards</Button>
-                            </div>
-                            <div className="relative mx-auto max-w-5xl overflow-hidden rounded-lg border border-gray-200 shadow-xl">
-                                {activeTab === "organize" &&
-                                    (<Image 
-                                        src="/hero-images/hero1.png" 
-                                        alt="Organize Applications" 
-                                        width={1200}
-                                        height={800}
-                                />)}
-
-                                {activeTab === "hired" &&
-                                    (<Image 
-                                        src="/hero-images/hero2.png" 
-                                        alt="Organize Applications" 
-                                        width={1200}
-                                        height={800}
-                                />)}
-
-                                {activeTab === "boards" &&
-                                    (<Image 
-                                        src="/hero-images/hero3.png" 
-                                        alt="Organize Applications" 
-                                        width={1200}
-                                        height={800}
-                                />)}
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <HeroTabs />
             </main>
         </div>
     );
