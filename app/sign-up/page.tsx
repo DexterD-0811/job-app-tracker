@@ -1,13 +1,51 @@
-"use-client";
+"use client";
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
+import { signUp } from "@/lib/auth/auth-client"
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 
 export default function SignUp() {
+
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState("false");
+
+    const router = useRouter();
+
+    async function handleSubmit(e: React.FormEvent) {
+        e.preventDefault();
+
+        setError("");
+        setLoading(true);
+
+        try {
+            const result = await signUp.email({
+                name,
+                email,
+                password,
+            });
+
+            if(result.error) {
+                setError(result.error.message ?? "Failed to sign up");
+            } else {
+                router.push("/dashboard");
+            }
+        } catch (err) {
+            setError("An unexpected error occured");
+        } finally {
+            setLoading(false);
+        }
+    }
+
     return (
         <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-white p-4">
             <Card className="w-full max-w-md border-gray-200 shadow-lg">
@@ -19,14 +57,16 @@ export default function SignUp() {
                         Create an account to start tracking you job applications
                     </CardDescription>
                 </CardHeader>
-                <form>
+                <form onSubmit={handleSubmit} className="space-y-4">
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
                             <Label htmlFor="name" className="text-gray-700" >Name</Label>
                             <Input 
                                 id="name" 
                                 type="text" 
-                                placeholder="John Doe" 
+                                placeholder="John Doe"
+                                value={name}
+                                onChange={(event) => setName(event.target.value)}
                                 required
                                 className="border-gray-300 focus:border-primary focus:ring-primary"
                             />
@@ -37,6 +77,8 @@ export default function SignUp() {
                                 id="email" 
                                 type="email" 
                                 placeholder="John@example.com" 
+                                value={email}
+                                onChange={(event) => setEmail(event.target.value)}
                                 required 
                                 className="border-gray-300 focus:border-primary focus:ring-primary"
                             />
@@ -46,12 +88,14 @@ export default function SignUp() {
                             <Input 
                                 id="password" 
                                 type="password" 
+                                value={password}
+                                onChange={(event) => setPassword(event.target.value)}
                                 required 
                                 className="border-gray-300 focus:border-primary focus:ring-primary"
                             />
                         </div>
                     </CardContent>
-                    <CardFooter className="flex flex-col space-y-4 mt-4">
+                    <CardFooter className="flex flex-col space-y-4">
                         <Button type="submit" className="w-full bg-primary hover:bg-primary/90" >Sign Up</Button>
                         <p className="text-center text-sm text-gray-600">
                             Already have an account? 

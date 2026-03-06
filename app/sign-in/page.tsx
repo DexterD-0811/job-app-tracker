@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -19,7 +19,7 @@ export default function SignIn() {
                         Enter your credentials to access your account
                     </CardDescription>
                 </CardHeader>
-                <form>
+                <form className="space-y-4">
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
                             <Label htmlFor="email" className="text-gray-700" >Email</Label>
@@ -41,7 +41,7 @@ export default function SignIn() {
                             />
                         </div>
                     </CardContent>
-                    <CardFooter className="flex flex-col space-y-4 mt-4">
+                    <CardFooter className="flex flex-col space-y-4">
                         <Button type="submit" className="w-full bg-primary hover:bg-primary/90" >Sign In</Button>
                         <p className="text-center text-sm text-gray-600">
                             Don't have an account?
