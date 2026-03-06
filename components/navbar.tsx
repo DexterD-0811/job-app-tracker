@@ -32,23 +32,25 @@ export default function Navbar() {
                                 </Button>
                             </Link>
                             <DropdownMenu>
-                                <DropdownMenuTrigger>
-                                    <Button 
+                                <DropdownMenuTrigger asChild>
+                                    {/* CSS issues, rounded-full effects on Button not showing up */}
+                                    <Button
                                         variant="ghost"
+                                        className="relative h-8 w-8 rounded-full p-0"
                                     >
-                                        <Avatar>
-                                            <AvatarFallback className="text-white bg-primary">
-                                                {session.user.name[0].toUpperCase()}
-                                            </AvatarFallback>
+                                        <Avatar className="h-8 w-8">
+                                        <AvatarFallback className="flex h-full w-full items-center justify-center rounded-full bg-primary text-white">
+                                            {session.user.name[0].toUpperCase()}
+                                        </AvatarFallback>
                                         </Avatar>
                                     </Button>
                                 </DropdownMenuTrigger>
-
-                                <DropdownMenuContent>
-                                    <DropdownMenuLabel>
-                                        <div>
-                                            <p>{session.user.name}</p>
-                                            <p>{session.user.email}</p>
+                                {/* CSS issues, hover effects on SignOutButton not showing up */}
+                                <DropdownMenuContent className="w-56 space-y-2" align="end">
+                                    <DropdownMenuLabel className="font-normal">
+                                        <div className="flex flex-col space-y-1">
+                                            <p className="text-sm font-medium leading-none">{session.user.name}</p>
+                                            <p className="text-xs leading-none text-muted-foreground">{session.user.email}</p>
                                         </div>
                                     </DropdownMenuLabel>
                                     <SignOutButton />
@@ -58,10 +60,19 @@ export default function Navbar() {
                     ) : (
                         <>
                         <Link href="sign-in">
-                            <Button variant="ghost" className="text-gray-700 hover:text-black">Log In</Button>
+                            <Button 
+                                variant="ghost" 
+                                className="text-gray-700 hover:text-black"
+                            >
+                                Log In
+                            </Button>
                         </Link>
                         <Link href="sign-up">
-                            <Button className="bg-primary hover:bg-primary/90">Start for free</Button>
+                            <Button 
+                                className="bg-primary hover:bg-primary/90"
+                            >
+                                Start for free
+                            </Button>
                         </Link>
                     </>)}
                 </div>
