@@ -17,7 +17,7 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
 
     const [error, setError] = useState("");
-    const [loading, setLoading] = useState("false");
+    const [loading, setLoading] = useState(false);
 
     const router = useRouter();
 
@@ -59,6 +59,11 @@ export default function SignUp() {
                 </CardHeader>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <CardContent className="space-y-4">
+                        {error && (
+                        <div className="rounded-md bg-destructive/15 p-3 text-sm text-destructive">
+                            {error}
+                        </div>
+                        )}
                         <div className="space-y-2">
                             <Label htmlFor="name" className="text-gray-700" >Name</Label>
                             <Input 
@@ -91,12 +96,20 @@ export default function SignUp() {
                                 value={password}
                                 onChange={(event) => setPassword(event.target.value)}
                                 required 
+                                minLength={8}
+
                                 className="border-gray-300 focus:border-primary focus:ring-primary"
                             />
                         </div>
                     </CardContent>
                     <CardFooter className="flex flex-col space-y-4">
-                        <Button type="submit" className="w-full bg-primary hover:bg-primary/90" >Sign Up</Button>
+                        <Button 
+                            type="submit" 
+                            className="w-full bg-primary hover:bg-primary/90" 
+                            disabled={loading}
+                        >
+                            {loading ? "Creating account..." : "Sign Up"}
+                        </Button>
                         <p className="text-center text-sm text-gray-600">
                             Already have an account? 
                             <Link href="/sign-in" className="font-medium text-primary hover:underline pl-2">Sign In</Link>
