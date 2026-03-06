@@ -55,7 +55,7 @@ export default function SignUp() {
                         <Button type="submit" className="w-full bg-primary hover:bg-primary/90" >Sign Up</Button>
                         <p className="text-center text-sm text-gray-600">
                             Already have an account? 
-                            <Link href="/sign-in" className="font-medium text-primary hover:underline">Sign In</Link>
+                            <Link href="/sign-in" className="font-medium text-primary hover:underline pl-2">Sign In</Link>
                         </p>
                     </CardFooter>
                 </form>
