@@ -3,6 +3,7 @@ import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
 
 interface CreateJobApplicationDialogProps {
     columnId: string;
@@ -48,21 +49,21 @@ export default function CreateJobApplicationDialog({columnId, boardId} : CreateJ
                                 <Input id="salary" placeholder="e.g., ₱15,000 - ₱150,000" />
                             </div>
                         </div>
-                            <div>
+                            <div className="space-y-2"> 
                                 <Label htmlFor="jobUrl">Job URL</Label>
                                 <Input id="jobUrl" placeholder="https://" />
                             </div>
-                            <div>
+                            <div className="space-y-2">
                                 <Label htmlFor="tags">Tags(comma-separated)</Label>
-                                <Input id="tags" placeholder="React, Tailwind, High Pay" />
+                                <Input id="tags" rows={3} placeholder="React, Tailwind, High Pay" />
                             </div>
-                            <div>
+                            <div className="space-y-2">
                                 <Label htmlFor="description">Description</Label>
-                                <Input id="description" placeholder="Brief description of the role..." />
+                                <Textarea id="description" placeholder="Brief description of the role..." />
                             </div>
-                            <div>
+                            <div className="space-y-2">
                                 <Label htmlFor="notes">Notes</Label>
-                                <Input id="notes" />
+                                <Textarea id="notes" rows={4} />
                             </div>
                     </div>
 
