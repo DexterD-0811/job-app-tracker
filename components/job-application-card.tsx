@@ -12,20 +12,25 @@ interface JobApplicationCardProps {
 export default function JobApplicationCard({job, columns}: JobApplicationCardProps) {
     return (
         <>
-            <Card>
-                <CardContent>
-                    <div>
-                        <div>
-                            <h3>{job.position}</h3>
-                            <p>{job.company}</p>
+            <Card className="cursor-pointer transition-shadow hover:shadow-lg bg-white group shadow-sm">
+                <CardContent className="p-6">
+                    <div className="flex items-start justify-between gap-2">
+                        <div className="flex flex-col flex-1 min-w-0 justify-between gap-2">
+                            <h3 className="font-semibold text-sm mb-1">{job.position}</h3>
+                            <p className="text-xs text-muted-foreground mb-2">{job.company}</p>
                             {job.description && 
-                                <p>{job.description}</p>
+                                <p className="text-xs text-muted-foreground mb-2 line-clamp-2">{job.description}</p>
                             }
                             {job.tags && job.tags.length > 0 && (
-                                <div>
-                                    {job.tags.map((tag, key) => (
-                                        <span>{tag}</span>
-                                    ))}
+                                <div className="flex flex-wrap gap-1 mb-2">
+                                {job.tags.map((tag, index) => (
+                                    <span
+                                    key={index}
+                                    className="px-2 py-0.5 text-xs rounded-full bg-primary text-primary-foreground"
+                                    >
+                                    {tag}
+                                    </span>
+                                ))}
                                 </div>
                             )}
                             {job.jobUrl && (
@@ -35,7 +40,7 @@ export default function JobApplicationCard({job, columns}: JobApplicationCardPro
                                 className="inline-flex items-center gap-1 text-xs text-primary hover:underline mt-1"
                                 onClick={(e) => e.stopPropagation()}
                                 >
-                                <ExternalLink className="h-3 w-3" />
+                                <ExternalLink size={14} />
                                 </a>
                             )}
                         </div>
@@ -43,13 +48,13 @@ export default function JobApplicationCard({job, columns}: JobApplicationCardPro
                         <div>
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" size="icon" className="cursor-pointer">
-                                        <MoreVertical />
+                                    <Button variant="ghost" size="icon" >
+                                        <MoreVertical className="h-4 w-4" />
                                     </Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent>
                                     <DropdownMenuItem align="end">
-                                        <Edit2 />
+                                        <Edit2 className="mr-2 h-4 w-4" />
                                         Edit
                                     </DropdownMenuItem>
                                     {columns.length > 1 && (
@@ -63,8 +68,8 @@ export default function JobApplicationCard({job, columns}: JobApplicationCardPro
                                         </>
                                     )}
 
-                                    <DropdownMenuItem>
-                                        <Trash2 />
+                                    <DropdownMenuItem className="text-destructive">
+                                        <Trash2 className="mr-2 h-4 w-4" />
                                         Delete
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>
