@@ -2,7 +2,7 @@ import connectDB from "../lib/db";
 import "@/lib/models";
 import { Board, Column, JobApplication } from "@/lib/models";
 
-const USER_ID = "6929e34361b6f083d154859d";
+const USER_ID = "69b469cdb63aae618c604850";
 
 const SAMPLE_JOBS = [
   // Wish List
@@ -13,7 +13,7 @@ const SAMPLE_JOBS = [
     tags: ["React", "Tailwind", "High Pay"],
     description: "Build modern web applications using React and Tailwind CSS",
     jobUrl: "https://example.com/jobs/1",
-    salary: "$120k - $150k",
+    salary: "₱120k - ₱150k",
   },
   {
     company: "Stripe",
@@ -22,7 +22,7 @@ const SAMPLE_JOBS = [
     tags: ["TypeScript", "React", "Next.js"],
     description: "Work on payment infrastructure frontend",
     jobUrl: "https://example.com/jobs/2",
-    salary: "$130k - $160k",
+    salary: "₱130k - ₱160k",
   },
   {
     company: "Nutrishe",
@@ -31,7 +31,7 @@ const SAMPLE_JOBS = [
     tags: ["CIT", "Appium", "CI/CD"],
     description: "Ensure quality of mobile and web applications",
     jobUrl: "https://example.com/jobs/3",
-    salary: "$90k - $110k",
+    salary: "₱90k - ₱110k",
   },
   // Applied
   {
@@ -41,7 +41,7 @@ const SAMPLE_JOBS = [
     tags: ["promQL", "Full-stack", "Docker"],
     description: "Manage infrastructure and deployment pipelines",
     jobUrl: "https://example.com/jobs/4",
-    salary: "$110k - $140k",
+    salary: "₱110k - ₱140k",
   },
   {
     company: "Nomura",
@@ -50,7 +50,7 @@ const SAMPLE_JOBS = [
     tags: ["React Native", "iOS", "Android"],
     description: "Develop mobile applications for financial services",
     jobUrl: "https://example.com/jobs/5",
-    salary: "$100k - $130k",
+    salary: "₱100k - ₱130k",
   },
   {
     company: "Wise",
@@ -59,7 +59,7 @@ const SAMPLE_JOBS = [
     tags: ["Figma", "Design Systems", "User Research"],
     description: "Design beautiful and intuitive user experiences",
     jobUrl: "https://example.com/jobs/6",
-    salary: "$80k - $100k",
+    salary: "₱80k - ₱100k",
   },
   {
     company: "Danone",
@@ -68,7 +68,7 @@ const SAMPLE_JOBS = [
     tags: ["promQL", "Full-stack", "Docker"],
     description: "Support cloud infrastructure and CI/CD",
     jobUrl: "https://example.com/jobs/7",
-    salary: "$95k - $120k",
+    salary: "₱95k - ₱120k",
   },
   // Interviewing
   {
@@ -78,7 +78,7 @@ const SAMPLE_JOBS = [
     tags: ["Figma", "React", "Bootstrap"],
     description: "Create responsive web designs and implement them",
     jobUrl: "https://example.com/jobs/8",
-    salary: "$85k - $105k",
+    salary: "₱85k - ₱105k",
   },
   {
     company: "WorkLab",
@@ -88,7 +88,7 @@ const SAMPLE_JOBS = [
     description:
       "Help drive the product and business planning for our platform",
     jobUrl: "https://example.com/jobs/9",
-    salary: "$140k - $170k",
+    salary: "₱140k - ₱170k",
   },
   {
     company: "I Networks",
@@ -97,7 +97,7 @@ const SAMPLE_JOBS = [
     tags: ["Flutter", "Dart", "Firebase"],
     description: "Build cross-platform mobile applications",
     jobUrl: "https://example.com/jobs/10",
-    salary: "$115k - $145k",
+    salary: "₱115k - ₱145k",
   },
   // Offer
   {
@@ -107,7 +107,7 @@ const SAMPLE_JOBS = [
     tags: ["Node.js", "PostgreSQL", "AWS"],
     description: "Develop backend services and APIs",
     jobUrl: "https://example.com/jobs/11",
-    salary: "$100k - $125k",
+    salary: "₱100k - ₱125k",
   },
   {
     company: "MUS Logistics",
@@ -117,7 +117,7 @@ const SAMPLE_JOBS = [
     description:
       "Lead the UX process and workflow, and work closely with development team",
     jobUrl: "https://example.com/jobs/12",
-    salary: "$90k - $110k",
+    salary: "₱90k - ₱110k",
   },
   // Rejected
   {
@@ -127,7 +127,7 @@ const SAMPLE_JOBS = [
     tags: ["Scrum", "Agile"],
     description: "Support product development and project management",
     jobUrl: "https://example.com/jobs/13",
-    salary: "$70k - $85k",
+    salary: "₱70k - ₱85k",
   },
   {
     company: "NRI",
@@ -136,7 +136,7 @@ const SAMPLE_JOBS = [
     tags: ["Testing", "Automation"],
     description: "Manage product testing and quality assurance",
     jobUrl: "https://example.com/jobs/14",
-    salary: "$75k - $90k",
+    salary: "₱75k - ₱90k",
   },
   {
     company: "TOG London",
@@ -145,7 +145,7 @@ const SAMPLE_JOBS = [
     tags: ["JavaScript", "Python", "SQL"],
     description: "Analyze user data and provide insights for product decisions",
     jobUrl: "https://example.com/jobs/15",
-    salary: "$85k - $100k",
+    salary: "₱85k - ₱100k",
   },
 ];
 
@@ -158,7 +158,7 @@ async function seed() {
 
   try {
     console.log("🌱 Starting seed process...");
-    console.log(`📋 Seeding data for user ID: ${USER_ID}`);
+    console.log(`📋 Seeding data for user ID: ₱{USER_ID}`);
 
     await connectDB();
     console.log("✅ Connected to database");
@@ -179,7 +179,7 @@ async function seed() {
     const columns = await Column.find({ boardId: board._id }).sort({
       order: 1,
     });
-    console.log(`✅ Found ${columns.length} columns`);
+    console.log(`✅ Found ₱{columns.length} columns`);
 
     if (columns.length === 0) {
       console.error(
@@ -198,7 +198,7 @@ async function seed() {
     const existingJobs = await JobApplication.find({ userId: USER_ID });
     if (existingJobs.length > 0) {
       console.log(
-        `🗑️  Deleting ${existingJobs.length} existing job applications...`
+        `🗑️  Deleting ₱{existingJobs.length} existing job applications...`
       );
       await JobApplication.deleteMany({ userId: USER_ID });
 
@@ -223,7 +223,7 @@ async function seed() {
     for (const [columnName, jobs] of Object.entries(jobsByColumn)) {
       const columnId = columnMap[columnName];
       if (!columnId) {
-        console.warn(`⚠️  Column "${columnName}" not found, skipping...`);
+        console.warn(`⚠️  Column "₱{columnName}" not found, skipping...`);
         continue;
       }
 
@@ -252,13 +252,13 @@ async function seed() {
       }
 
       await column.save();
-      console.log(`✅ Added ${jobs.length} jobs to "${columnName}" column`);
+      console.log(`✅ Added ₱{jobs.length} jobs to "₱{columnName}" column`);
     }
 
     console.log(`\n🎉 Seed completed successfully!`);
-    console.log(`📊 Created ${totalCreated} job applications`);
-    console.log(`📋 Board: ${board.name}`);
-    console.log(`👤 User ID: ${USER_ID}`);
+    console.log(`📊 Created ₱{totalCreated} job applications`);
+    console.log(`📋 Board: ₱{board.name}`);
+    console.log(`👤 User ID: ₱{USER_ID}`);
 
     process.exit(0);
   } catch (error) {
