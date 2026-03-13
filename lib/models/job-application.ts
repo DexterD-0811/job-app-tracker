@@ -36,7 +36,7 @@ const JobApplicationSchema = new Schema<IJobApplication>({
         required: true,
         default: "applied",
     },
-    columndId: {
+    columnId: {
         type: Schema.Types.ObjectId,
         ref: "Column",
         required: true,
