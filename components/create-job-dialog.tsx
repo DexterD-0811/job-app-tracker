@@ -1,6 +1,6 @@
 import { Plus } from "lucide-react";
 import { Button } from "./ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 
@@ -30,25 +30,46 @@ export default function CreateJobApplicationDialog({columnId, boardId} : CreateJ
                     <div className="space-y-4">
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label>Company *</Label>
+                                <Label htmlFor="company">Company *</Label>
                                 <Input id="company" required />
                             </div>
                             <div className="space-y-2">
-                                <Label>Position *</Label>
+                                <Label htmlFor="position">Position *</Label>
                                 <Input id="position" required />
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <Label>Location</Label>
+                                <Label htmlFor="location">Location</Label>
                                 <Input id="location" />
                             </div>
                             <div className="space-y-2">
-                                <Label>Salary</Label>
+                                <Label htmlFor="salary">Salary</Label>
                                 <Input id="salary" placeholder="e.g., ₱15,000 - ₱150,000" />
                             </div>
                         </div>
+                            <div>
+                                <Label htmlFor="jobUrl">Job URL</Label>
+                                <Input id="jobUrl" placeholder="https://" />
+                            </div>
+                            <div>
+                                <Label htmlFor="tags">Tags(comma-separated)</Label>
+                                <Input id="tags" placeholder="React, Tailwind, High Pay" />
+                            </div>
+                            <div>
+                                <Label htmlFor="description">Description</Label>
+                                <Input id="description" placeholder="Brief description of the role..." />
+                            </div>
+                            <div>
+                                <Label htmlFor="notes">Notes</Label>
+                                <Input id="notes" />
+                            </div>
                     </div>
+
+                    <DialogFooter>
+                        <Button type="button" variant="outline">Cancel</Button>
+                        <Button type="submit">Add Application</Button>
+                    </DialogFooter>
                 </form>
             </DialogContent>
         </Dialog>
