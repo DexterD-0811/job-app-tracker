@@ -23,6 +23,7 @@ async function getBoard(userId: string) {
     if (!boardDoc) return null;
 
     const board = JSON.parse(JSON.stringify(boardDoc));
+    
 
     return board;
 }
@@ -30,7 +31,7 @@ async function getBoard(userId: string) {
 async function DashboardPage() {
     const session = await getSession();
     const board = await getBoard(session?.user.id ?? "");
-
+    console.log("user id", session?.user.id );
     if (!session?.user) {
         redirect("/sign-in");
     }
