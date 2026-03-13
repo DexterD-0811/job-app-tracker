@@ -68,8 +68,8 @@ export default function CreateJobApplicationDialog({columnId, boardId} : CreateJ
                     </div>
 
                     <DialogFooter>
-                        <Button type="button" variant="outline">Cancel</Button>
-                        <Button type="submit">Add Application</Button>
+                        <Button type="button" variant="outline" className="cursor-pointer">Cancel</Button>
+                        <Button type="submit" className="cursor-pointer">Add Application</Button>
                     </DialogFooter>
                 </form>
             </DialogContent>
