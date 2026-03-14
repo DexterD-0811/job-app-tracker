@@ -20,7 +20,9 @@ export function useBoard(initialBoard?: Board | null) {
         jobApplicationId: string, 
         newColumnId: string,
         newOrder: number,
-    ) {}
+    ) {
+        console.log(jobApplicationId, newColumnId, newOrder);
+    }
 
     return { board, columns, error, moveJob };
 }
