@@ -13,15 +13,16 @@ import { Textarea } from "./ui/textarea";
 import React, { useState } from "react";
 import { createJobApplication } from "@/lib/actions/job-applications";
 
-
 interface JobApplicationCardProps {
     job: JobApplication;
     columns: Column[];
+    dragHandleProps?: React.HTMLAttributes<HTMLElement>;
 }
 
 export default function JobApplicationCard({
     job, 
-    columns
+    columns,
+    dragHandleProps,
     }: JobApplicationCardProps) {
 
         const [isEditing, setIsEditing] = useState(false);
@@ -80,7 +81,9 @@ export default function JobApplicationCard({
 
     return (
         <>
-            <Card className="cursor-pointer transition-shadow hover:shadow-lg bg-white group shadow-sm">
+            <Card className="cursor-pointer transition-shadow hover:shadow-lg bg-white group shadow-sm" 
+                {...dragHandleProps}
+            >
                 <CardContent className="p-6">
                     <div className="flex items-start justify-between gap-2">
                         <div className="flex flex-col flex-1 min-w-0 justify-between gap-2">
