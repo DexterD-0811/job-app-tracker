@@ -8,7 +8,7 @@ import { Board, Column, JobApplication } from "@/lib/models/models.types";
 import CreateJobApplicationDialog from "./create-job-dialog";
 import JobApplicationCard from "./job-application-card";
 import { useBoard } from "@/lib/hooks/useBoards";
-import { closestCorners, DndContext, DragEndEvent, DragStartEvent, PointerSensor, useDroppable, useSensor, useSensors } from "@dnd-kit/core";
+import { closestCorners, DndContext, DragEndEvent, DragOverlay, DragStartEvent, PointerSensor, useDroppable, useSensor, useSensors } from "@dnd-kit/core";
 import { SortableContext, useSortable, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { useState } from "react";
@@ -258,6 +258,8 @@ export default function KanbanBoard({board, userId}: KanbanBoardProps) {
         await moveJob(activeId, targetColumnId, newOrder);
     }
 
+    const activeJob = sortedColumns.flatMap((col) => col.jobApplications || [])
+        .find((job) => job._id === activeId);
     return (
         <DndContext 
             sensors={sensors} 
@@ -284,6 +286,14 @@ export default function KanbanBoard({board, userId}: KanbanBoardProps) {
                     })}
                 </div>
             </div>
+
+            <DragOverlay>
+                {activeJob ? (
+                    <div className="opacity-50">
+                        <JobApplicationCard job={activeJob} columns={sortedColumns} />
+                    </div>
+                ): null}
+            </DragOverlay>
         </DndContext>
     )
 }
